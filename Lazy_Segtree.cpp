@@ -46,7 +46,7 @@ struct Segtree{			// !!! 1 based indexing !!!
 	node* lazy = new node[MAX];	
 	void init(ll num, ll l , ll r){
 		if(l==r){
-			lazy[num] = node ( l,l,0,0 ); 
+		//	lazy[num] = node ( l,l,0,0 );  TODO initialize values
 			return;
 		}
 		init((num<<1), l, (l+r)/2), init((num<<1)|1, (l+r)/2+1, r);
@@ -64,7 +64,7 @@ struct Segtree{			// !!! 1 based indexing !!!
 			lazy[(num<<1)].tag = lazy[(num<<1)|1].tag = 1;
 			lazy[(num<<1)] += lazy[num], lazy[(num<<1)|1]+=lazy[num];
 		}
-		lazy[num].tagval = 0;
+	//	lazy[num].tagval = 0; TODO update tagval
 	}
 	
 	void upd(ll num, node& b){
