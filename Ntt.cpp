@@ -25,23 +25,22 @@ typedef pair<ll, ll> pii;
 typedef vector<pii> vpii;
 const ll INF = 0x3f3f3f3f;
 const ll inf =  pow(10,18);
-ll modulo = pow(10,9) + 7;
-const long long MOD = modulo;
+ll modulo = 163577857;
 
 // taken from https://www.codechef.com/viewsolution/18397100 
  
 long long powmod(long long a, int p) {
     long long r = 1;
     while (p) {
-        if (p & 1) r = r * a % MOD;
-        p >>= 1; a = a * a % MOD;
+        if (p & 1) r = r * a % modulo;
+        p >>= 1; a = a * a % modulo;
     }
     return r;
 }
  
 
 namespace NTT {
-    const long long P = modulo;
+    const long long P = 163577857;
     const int K = 20;
     const int ROOT = 23;
     const int N = 1 << K;
@@ -106,6 +105,9 @@ namespace NTT {
 
 
 void deal(){
+	// change the root of unity accordingly if u want to change modulo and P
+	
+	
 	
 }
 
