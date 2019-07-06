@@ -47,7 +47,7 @@ namespace centroid{
 	}
 	void push_root(int hd, int pr, int root, int dt){		// push the chosen root to all the descendants in centroid tree
 		roots[hd].push_back(mp(root,dt));
-		fori(g[hd].size()){
+		for(g[hd].size()){
 			int hr = g[hd][i];
 			if(hr==pr || dlt[hr])
 				continue;
