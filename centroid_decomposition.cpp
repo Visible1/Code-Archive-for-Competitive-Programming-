@@ -37,7 +37,7 @@ namespace centroid{
 		}
 	}
 	int centre(int hd,int pr, int siz){						// find the centre of the given tree 
-		fori(auto hr : g[hd]){
+		for(auto hr : g[hd]){
 			if(hr == pr || dlt[hr])
 				continue;
 			if(sz[hr] > siz/2 )
@@ -47,7 +47,7 @@ namespace centroid{
 	}
 	void push_root(int hd, int pr, int root, int dt){		// push the chosen root to all the descendants in centroid tree
 		roots[hd].push_back(mp(root,dt));
-		for(g[hd].size()){
+		fori(g[hd].size()){
 			int hr = g[hd][i];
 			if(hr==pr || dlt[hr])
 				continue;
