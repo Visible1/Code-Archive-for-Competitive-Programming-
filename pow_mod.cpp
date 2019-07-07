@@ -35,7 +35,7 @@ ll pow_mod(ll a, ll b){
 	for(ll i = 62; i>-1; i--){
 		has*=has;
 		has%=modulo;
-		if((1<<i)&b)
+		if(((ll)1<<i)&b)
 			has*=a, has%=modulo;
 	}
 	return has;
