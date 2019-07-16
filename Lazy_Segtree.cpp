@@ -36,9 +36,11 @@ struct Segtree{			// !!! 1 based indexing !!!
 			return node(l, other.r, val+other.val,0);									
 		}
 		void operator+=(node& other){	// TODO merge 2 tag (existing tag, new tag) values 						
-				
+			// merge other's "tagval" to our "tagval" only !!!! otherwise need modification
+			
 		}
 		void operator*=(node& other){	// TODO merge node value to query value
+			// merge other's "val" to our "val" only !!!! otherwise need modification
 			
 		}
 	};
@@ -46,7 +48,7 @@ struct Segtree{			// !!! 1 based indexing !!!
 	node* lazy = new node[MAX];	
 	void init(ll num, ll l , ll r){
 		if(l==r){
-		//	lazy[num] = node ( l,l,0,0 );  TODO initialize values
+		//	lazy[num] = node ( l, r, val, tagval );  TODO initialize values
 			return;
 		}
 		init((num<<1), l, (l+r)/2), init((num<<1)|1, (l+r)/2+1, r);
@@ -96,8 +98,10 @@ void deal(){
 	// usage : 
 	// Segtree lz
 	// lz.init(1,1,n);
-	// Segtree::node query( you probably want the update range l,r here , no base value, a tagvalue of the update ), 	    lz.upd( 1, query );
-	// Segtree::node query(  you probably want the query range l,r here, a base value, no tag value ),						lz.que(1, query ), 	cout<<query.val;
+	// Updates:
+	// Segtree::node query(l,r,0,tagval), lz.upd(1, query). !!! tagval is the update  ( so initialize it ) !!!
+	// Queries:
+	// Segtree::node query(l,r,val,   0), lz.que(1, query). !!! val    will be answer to query ( so initialize it ) !!
 	Segtree lz;
 	
 }
