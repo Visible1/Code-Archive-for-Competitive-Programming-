@@ -32,8 +32,8 @@ struct Segtree{			// !!! 1 based indexing !!!
 		void integrate(){	// TODO integrate tagvalue to node value
 			
 		}
-		node operator+(node other){		// TODO merge children															
-			return node(l, other.r, val+other.val,0);									
+		node operator+(node other){		// TODO merge "val" of  children properly															
+		//	return node(l, other.r, ?? ,0);									
 		}
 		void operator+=(node& other){	// TODO merge 2 tag (existing tag, new tag) values 						
 			// merge other's "tagval" to our "tagval" only !!!! otherwise need modification
