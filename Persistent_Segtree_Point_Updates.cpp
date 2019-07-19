@@ -35,12 +35,13 @@ struct per_seg{
 		int data = 0;
 		int l, r;			// bounds of this node
 		int left, right;	// index of left right child
+		Node(){}
 		Node(int data, int l, int r, int left, int right) : data(data), l(l), r(r), left(left), right(right) {}
-		Node(Node& other){		// TODO fill in the point update you want for the new nodes added
-			
+		Node(Node& other) : l(other.l), r(other.r), data(other.data+1){		// TODO fill in the point update you want for the new nodes added
+		
 		}
 		void operator*=(Node& other){	// TODO merge node value to query value
-			
+			data += other.data;
 		}
 	};
 	int indices[MAX];
@@ -61,20 +62,22 @@ struct per_seg{
 		int cur = count_;
 		++count_;
 		roots[cur] = Node(roots[base]);
+//		cout<<"We wanna update "<<index<<" we at "<<roots[base].l<<" "<<roots[base].r<<"the cur "<<cur<<endl;
 		if(roots[base].l == roots[base].r)	return cur;
-		roots[cur].left = create_update(index,roots[base].left);
+		roots[cur].left  = create_update(index,roots[base].left);
 		roots[cur].right = create_update(index,roots[base].right);
 		return cur;
 	}
 	void que(int hd, Node& query){ // the range query , assumption l <= r
+//		cout<<" we at "<<hd<<" left: "<<roots[hd].l<<" right: "<<roots[hd].r<<" val : "<<roots[hd].data<<endl;
 		if(roots[hd].l > query.r || roots[hd].r < query.l)	return ;
-		if(roots[hd].l >= query.l && roots[hd].r <=query.r)	query*=roots[hd];
+		if(roots[hd].l >= query.l && roots[hd].r <=query.r){	query*=roots[hd]; return; }
 		que(roots[hd].left,  query);
 		que(roots[hd].right, query);
 	}
 };
 
-void deal(){
+void test(){
 	// Modify Node struct accordingly to use
 	// usage:
 	// per_seg Seg;
@@ -83,15 +86,33 @@ void deal(){
 	// per_seg::Node 	query( data initialized to 0, left end , right end , -1 , -1)
 	// Seg.que( Seg.indices[ "the query root" ] , query );
 	// cout<<query.data;
+	per_seg Seg;
+	Seg.indices[0] = Seg.create_root(1,5);
+	for(ll i =1; i<5; i++){
+		Seg.indices[i] = Seg.create_update(i, Seg.indices[i-1]);
+	}
+	for(ll i = 0 ; i<5; i++){
+		cout<<"!!Segtree number "<<i<<" !!!"<<endl;
+		for(ll l = 1; l<=5; l++){
+			for(ll r = l; r<=5; r++){
+				per_seg::Node 	query( 0, l, r , -1 , -1);
+				Seg.que(Seg.indices[i], query);
+				cout<<l<<" "<<r<<" "<<query.data<<endl;
+			}
+		}
+	}
+}
+
+void deal(){
 	
 }
 
 int main() {
 	cin.tie(0);
 	ios_base::sync_with_stdio(0);
+	test();
 	deal();
 }    
-
 
 
 
