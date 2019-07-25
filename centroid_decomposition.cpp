@@ -14,6 +14,7 @@ using namespace std;
 #define double long double
 #define MAX 100000
 #define N 100000
+#define pb(a) push_back(a)
 // #define cout out
 // #define cin in
 ll inf = pow(10,9);
@@ -85,5 +86,4 @@ int main(){
 	ios_base::sync_with_stdio(0);
 	deal();
 }
-
 
