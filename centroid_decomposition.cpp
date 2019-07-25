@@ -66,6 +66,10 @@ namespace centroid{
 					create(hr);
 			}
 	}
+	void ini(ll n){
+		fori(n)
+			dlt[i] = 0, g[i].clear(), roots[i].clear(), sz[i] = 0;
+	}
 }
 
 
@@ -81,6 +85,5 @@ int main(){
 	ios_base::sync_with_stdio(0);
 	deal();
 }
-
 
 
