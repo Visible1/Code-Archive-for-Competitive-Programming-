@@ -92,7 +92,7 @@ namespace centroid{
 			dist[cnt][last][0] = 1;
 			fori(dist[cnt].size()-1)
 				for(ll j = 1; j<dist[cnt][i].size(); j++)
-					dist[cnt][last][j] += dist[cnt][last][j-1];
+					dist[cnt][last][j] += dist[cnt][i][j] - dist[cnt][i][j-1];
 			for(ll i = 1; i<overall; i++)
 				dist[cnt][last][i] += dist[cnt][last][i-1];
 /*			cout<<"number of dudes for centre in total "<<endl;
@@ -163,4 +163,3 @@ int main(){
 	ios_base::sync_with_stdio(0);
 	test();
 }
-
