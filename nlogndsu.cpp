@@ -34,7 +34,7 @@ namespace dsu{
 	vector<int> dsu[MAX];
 	void ini(int n){
 		fori(n)
-			aid[i] = i, dsu[i].push_back(i);
+			aid[i] = i, dsu[i].clear(), dsu[i].push_back(i);
 	}
 	bool join(int a,int b){  //	1 - if joined, 0 - if they were already joined 
 		int aid1 = aid[a], aid2 = aid[b];
