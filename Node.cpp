@@ -15,14 +15,6 @@ using namespace std;
 #define ll long long
 #define pb(a) push_back(a)
 typedef long double ld;
-typedef complex<ld> pt;
-typedef vector<pt> pol;
-typedef vector<ll> vi;
-typedef vector<vi> vvi;
-typedef vector<ld> vd;
-typedef vector<vd> vvd;
-typedef pair<ll, ll> pii;
-typedef vector<pii> vpii;
 const ll INF = 0x3f3f3f3f;
 const ll inf =  pow(10,18);
 ll modulo = pow(10,9) + 7;
