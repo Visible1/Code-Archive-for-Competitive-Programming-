@@ -90,9 +90,9 @@ void test(){
 		}
 	}
 }
- 
+
 void deal(){
-	
+	// !!! call dfs(root, root) , dont put -1 as the parent of the root !!! 
 }
  
 int main(){
