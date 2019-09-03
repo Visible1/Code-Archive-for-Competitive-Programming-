@@ -26,7 +26,7 @@ typedef vector<pii> vpii;
 const ll INF = 0x3f3f3f3f;
 const ll inf =  pow(10,18);
 ll modulo = pow(10,9) + 7;
-#define MAX (int)(2502 + 10)
+#define MAX (int)(pow(10,6) + 10)
 
 
 namespace dsu{
