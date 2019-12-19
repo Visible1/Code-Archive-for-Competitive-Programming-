@@ -14,6 +14,7 @@ using namespace std;
 #define ll long long 
 #define double long double
 #define MAX (int)(pow(10,6) + 10)
+#define MAX2 (int)20
 #define pb(a) push_back(a)
 // #define cout out
 // #define cin in
@@ -24,7 +25,7 @@ ifstream in;
 ofstream out;
  
 vector<ll> g[MAX];
-ll lca[MAX][20];
+ll lca[MAX][MAX2];
 ll dep[MAX];
  
  
@@ -39,7 +40,7 @@ void dfs(ll hd, ll pr){
 }
  
 void pre(ll n){
-	for(ll j = 1; j<20; j++)
+	for(ll j = 1; j<MAX2; j++)
 		fori(n)
 			lca[i][j]=  lca[lca[i][j-1]][j-1];
 }
@@ -48,12 +49,12 @@ ll LCA(ll a, ll b){
 	if(dep[a] < dep[b])
 		swap(a,b);
 	// a is deeper now, swim a upwards
-	for(ll j =19; j>-1; j--)
+	for(ll j = MAX2-1; j>-1; j--)
 		if(dep[lca[a][j]] > dep[b])
 			a = lca[a][j];
 	if(dep[a] != dep[b])
 		a = lca[a][0];
-	for(ll j=19; j>-1; j--)
+	for(ll j=MAX2-1; j>-1; j--)
 		if(lca[a][j]!=lca[b][j])
 			a = lca[a][j], b= lca[b][j];
 	if(a!=b)
@@ -92,7 +93,8 @@ void test(){
 }
 
 void deal(){
-	// !!! call dfs(root, root) , dont put -1 as the parent of the root !!! 
+	// !!! call dfs(root, root) , dont put -1 as the parent of the root !!!
+	// and then call pre() 
 }
  
 int main(){
