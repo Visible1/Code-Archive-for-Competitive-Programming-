@@ -30,6 +30,9 @@ ll modulo = pow(10,9) + 7;
 
 ll pow_mod(ll a, ll b){
 	a = a%modulo;
+	if(!a){
+		return 0;
+	}
 	ll mx = 0;
 	ll has = 1;
 	for(ll i = 62; i>-1; i--){
@@ -51,7 +54,6 @@ int main() {
 	ios_base::sync_with_stdio(0);
 	deal();
 }    
-
 
 
 
