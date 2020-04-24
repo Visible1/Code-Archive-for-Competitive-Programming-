@@ -32,40 +32,49 @@ ll modulo = pow(10,9) + 7;
 // Persistent Segment Tree with point updates and range queries
 struct per_seg{
 	struct Node{
-		int data = 0;
+		int data = 0; // TODO add additional types if needed and update the constructors
 		int l, r;			// bounds of this node
 		int left, right;	// index of left right child
 		Node(){}
-		Node(int data, int l, int r, int left, int right) : data(data), l(l), r(r), left(left), right(right) {}
-		Node(Node& other) : l(other.l), r(other.r), data(other.data+1){		// TODO fill in the point update you want for the new nodes added
-		
-		}
-		void operator*=(Node& other){	// TODO merge node value to query value
+		Node(int data, int l, int r, int left, int right) : data(data), l(l), r(r), left(left), right(right) {} 
+		Node(Node& other) : l(other.l), r(other.r), data(other.data){} 
+		void operator*=(Node& other){	//  merge node value to query value
 			data += other.data;
 		}
 	};
 	int indices[MAX];
 	Node roots[MAX];
 	int count_ = 0;
+	void pull(int idx){	// TODO update the pull if needed
+		if(roots[idx].l == roots[idx].r){
+			return;
+		}
+		ll lef = roots[idx].left, rig = roots[idx].right;
+		roots[idx].data = roots[lef].data + roots[rig].data;
+	}
 	int create_root(int l, int r){	// return the index of the newly created root
 		int cur = count_;
 		++count_;
-		roots[cur] = Node(0, l, r,0,0);	// TODO if u need to initialize data put it here
+		roots[cur] = Node(0, l, r,0,0);	//  TODO if u need to initialize data put it here
 		if(l!=r)	
 			roots[cur].left = create_root(l,(l+r)/2),	
 			roots[cur].right = create_root((l+r)/2+1,r);
 		return cur;
 	}
-	int create_update(int index, int base){	// index : the point of update, base : previous root
+	int create_update(int index, int base, int val){	// index : the point of update, base : previous root
 		if(index<roots[base].l || index>roots[base].r)
 			return base;
 		int cur = count_;
 		++count_;
 		roots[cur] = Node(roots[base]);
 //		cout<<"We wanna update "<<index<<" we at "<<roots[base].l<<" "<<roots[base].r<<"the cur "<<cur<<endl;
-		if(roots[base].l == roots[base].r)	return cur;
-		roots[cur].left  = create_update(index,roots[base].left);
-		roots[cur].right = create_update(index,roots[base].right);
+		if(roots[base].l == roots[base].r){	
+			roots[cur].data = val;
+			return cur;
+		}
+		roots[cur].left  = create_update(index,roots[base].left, val);
+		roots[cur].right = create_update(index,roots[base].right, val);
+		pull(cur);
 		return cur;
 	}
 	void que(int hd, Node& query){ // the range query , assumption l <= r
@@ -89,7 +98,7 @@ void test(){
 	per_seg Seg;
 	Seg.indices[0] = Seg.create_root(1,5);
 	for(ll i =1; i<5; i++){
-		Seg.indices[i] = Seg.create_update(i, Seg.indices[i-1]);
+		Seg.indices[i] = Seg.create_update(i, Seg.indices[i-1], 1);
 	}
 	for(ll i = 0 ; i<5; i++){
 		cout<<"!!Segtree number "<<i<<" !!!"<<endl;
@@ -113,18 +122,5 @@ int main() {
 	test();
 	deal();
 }    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
