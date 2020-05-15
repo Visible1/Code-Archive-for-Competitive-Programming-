@@ -47,7 +47,7 @@ void pre(){
 		forj((ll)mods.size()){
 			ll curmod = mods[j];
 			ll val = pow_mod(alpha, i, curmod);
-			ll curinv = pow_mod(val, curmod-2, curmod); // TODO change the inverse function according to alphabet
+			ll curinv = pow_mod(val, curmod-2, curmod); 
 			inv[i].pb(curinv);
 		}
 	}
