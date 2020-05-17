@@ -58,7 +58,7 @@ ll LCA(ll a, ll b){
 		if(lca[a][j]!=lca[b][j])
 			a = lca[a][j], b= lca[b][j];
 	if(a!=b)
-		a = lca[a][0];
+		a = lca[a][0], b = lca[b][0];
 	return a;
 }
  
