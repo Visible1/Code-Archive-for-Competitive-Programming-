@@ -23,7 +23,7 @@ ofstream out;
 
 // taken from brandonzhang
 
-const int N = 1e9;
+const int N = 1e8;
  
 bitset<N> isp;
 void pre() {
