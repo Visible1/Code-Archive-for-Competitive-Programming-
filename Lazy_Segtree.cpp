@@ -25,17 +25,20 @@ struct Segtree{			// !!! 1 based indexing !!!
 	
 
 	struct node{
-		ll l , r, val, tagval;						 											
+		ll l , r, val, tagval;					
 		bool tag;
 		node(){}													
-		node(ll l, ll r, ll val, ll tagval) : l(l), r(r), val(val), tagval(tagval), tag(0){}	// TODO add additional types	
+		node(ll l, ll r) : l(l), r(r){
+			// TODO give template values to all variables
+		}	
 		void integrate(){	// TODO integrate tagvalue to node value
 			
 		}
-		node operator+(node other){		// TODO merge "val" of  children properly															
-		//	return node(l, other.r, ?? ,0);									
+		node operator+(node other){												
+			node toret = node(l, other.r);
+			// TODO merge "val" of  children properly								
 		}
-		void operator+=(node& other){	// TODO merge 2 tag (existing tag, new tag) values 						
+		void operator+=(node& other){	// TODO merge 2 tag (existing tag, new tag) values
 			// merge other's "tagval" to our "tagval" only !!!! otherwise need modification
 			
 		}
@@ -48,7 +51,8 @@ struct Segtree{			// !!! 1 based indexing !!!
 	node* lazy = new node[MAX];	
 	void init(ll num, ll l , ll r){
 		if(l==r){
-		//	lazy[num] = node ( l, r, val, tagval );  TODO initialize values
+			lazy[num] = node ( l, r); 
+			// TODO initialize values if needed
 			return;
 		}
 		init((num<<1), l, (l+r)/2), init((num<<1)|1, (l+r)/2+1, r);
