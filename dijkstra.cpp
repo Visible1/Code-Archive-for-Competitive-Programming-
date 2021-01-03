@@ -56,17 +56,7 @@ vector<ll> dijkstra(ll st, ll n){
 
 void deal(){
 	ll n , m , s, t;
-	cin>>n>>m>>s>>t;
-	ll a, b;
-	cin>>a>>b;
-	vector<ll> workers(s);
-	fori(s){
-		cin>>workers[i];
-	}
-	vector<ll> clients(t);
-	fori(t){
-		cin>>clients[i];
-	}
+	cin>>n>>m;
 	
 	fori(m){
 		ll a, b, d;
@@ -75,7 +65,7 @@ void deal(){
 		g[b].pb(mp(a,d));
 	}
 	
-	dijkstra(a, n);
+	dijkstra(1, n);
 	
 }
 
