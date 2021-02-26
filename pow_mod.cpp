@@ -33,8 +33,7 @@ ll pow_mod(ll a, ll b){
 	if(!a){
 		return 0;
 	}
-	ll mx = 0;
-	ll has = 1;
+	ll has = 1%modulo;
 	for(ll i = 62; i>-1; i--){
 		has*=has;
 		has%=modulo;
