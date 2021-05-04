@@ -35,8 +35,9 @@ struct Segtree{			// !!! 1 based indexing !!!
 			
 		}
 		node operator+(node other){												
-			node toret = node(l, other.r);
-			// TODO merge "val" of  children properly								
+			node toret = node(min(l,other.l), max(r, other.r) );
+			// TODO merge "val" of  children properly
+									
 		}
 		void operator+=(node& other){	// TODO merge 2 tag (existing tag, new tag) values
 			// merge other's "tagval" to our "tagval" only !!!! otherwise need modification
