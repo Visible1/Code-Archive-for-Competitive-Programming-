@@ -20,7 +20,7 @@ const ll inf = pow(10, 18);
 ll modulo = pow(10,9) + 7;
 
 
-// David Berard's Aho Corasick, slighltly modified
+// David Berard's Aho Corasick, slightly modified
 
 #define NMAX 200200
 #define ALPHA 26
