@@ -30,9 +30,6 @@ ll modulo = pow(10,9) + 7;
 
 ll pow_mod(ll a, ll b){
 	a = a%modulo;
-	if(!a){
-		return 0;
-	}
 	ll has = 1%modulo;
 	for(ll i = 62; i>-1; i--){
 		has*=has;
