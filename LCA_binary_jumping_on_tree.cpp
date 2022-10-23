@@ -94,6 +94,7 @@ void test(){
 
 void deal(){
 	// !!! call dfs(root, root) , dont put -1 as the parent of the root !!!
+	// nodes must be numbered as  [ 0 .. n-1 ]
 	// and then call pre() 
 }
  
